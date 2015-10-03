@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "cputiming_impl.h"
+#include "cputiming.h"
 
 
 int
