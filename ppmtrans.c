@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
 {
         char *time_file_name = NULL;
         int   rotation       = 0;
+        int   i;
 
         /* default to UArray2 methods */
         A2Methods_T methods = uarray2_methods_plain; 
@@ -42,7 +43,7 @@ int main(int argc, char *argv[])
         A2Methods_mapfun *map = methods->map_default; 
         assert(map);
 
-        for (int i = 1; i < argc; i++) {
+        for (i = 1; i < argc; i++) {
                 if (strcmp(argv[i], "-row-major") == 0) {
                         SET_METHODS(uarray2_methods_plain, map_row_major, "row-major");
                 } else if (strcmp(argv[i], "-col-major") == 0) {
@@ -76,5 +77,5 @@ int main(int argc, char *argv[])
                 }
         }
 
-        assert(0);		// the rest of this function is not yet implemented
+        assert(0);              // the rest of this function is not yet implemented
 }
