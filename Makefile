@@ -26,9 +26,9 @@ CFLAGS = -g -std=c99 -Wall -Wextra -Werror -Wfatal-errors -pedantic $(IFLAGS)
 LDFLAGS = -g -L/comp/40/lib64 -L/usr/sup/cii40/lib64
 
 # Libraries needed for linking
-# Both programs need cii40 (Hanson binaries) and *may* need -lm (math)
-# Only brightness requires the binary for pnmrdr.
-LDLIBS = -lpnmrdr -lcii40 -lm
+# All programs cii40 (Hanson binaries) and *may* need -lm (math)
+# 40locality is a catch-all for this assignment, netpbm is needed for pnm
+LDLIBS = -l40locality -lnetpbm -lcii40 -lm
 
 # Collect all .h files in your directory.
 # This way, you can never forget to add
