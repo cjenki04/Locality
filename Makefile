@@ -72,5 +72,5 @@ ppmtrans: ppmtrans.o cputiming.o the-rest-of-your-files.o
 
 
 clean:
-	rm -f ppmtrans a2test *.o
+	rm -f ppmtrans a2test timing_test *.o
 
