@@ -18,7 +18,7 @@
  *         ... Do work to be timed here
  *       double cputime = CPUTime_Stop(timer);
  *
- *       cputime will be set to the CPY time in nanoseconds taken
+ *       cputime will be set to the CPU time in nanoseconds taken
  *       taken for the execution of the work being timed. This is 
  *       always an integer value stored in a double. For timings up to
  *       several million seconds, no precision should be lost.
