@@ -118,7 +118,7 @@ struct timespec *result, *x, *y;
 
 
 /*
- *                 timespec_to_long
+ *                 timespec_to_double
  *
  *     A timespec structure consists of two longs, one with seconds
  *     and one with nanoseconds. This function combines them
