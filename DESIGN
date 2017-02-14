@@ -1,0 +1,77 @@
+Conor Jenkinson
+HW 3 Locality
+
+PART A DESIGN
+1. A 2d array that is blocked by the given blocksize parameter
+
+2. T UArray2b_new(int width, int height, int size, int blocksize)
+        new blocked 2d array
+        blocksize = square root of # of cells in block.
+        blocksize < 1 is a checked runtime error
+   T    UArray2b_new_64K_block(int width, int height, int size);
+   new blocked 2d array: blocksize as large as possible provided
+   block occupies at most 64KB (if possible)
+   void  UArray2b_free     (T *array2b)
+   frees memory allocated by UArray2b_new
+   int   UArray2b_width    (T  array2b)
+   returns the width of the array
+   int   UArray2b_height   (T array2b)
+   returns the height of the array
+   int   UArray2b_size     (T  array2b)
+   returns the size of the type in the array
+   int   UArray2b_blocksize(T  array2b)
+   returns the size of the blocks
+   void *UArray2b_at(T array2b, int column, int row)
+   returns a pointer to the index at column,row
+   void  UArray2b_map(T array2b,
+                          void apply(int col, int row, T array2b,
+                                     void *elem, void *cl),
+   void *cl);
+   Maps the array by blocks and calls apply for every defined cell
+   in the array
+
+3. T uarray2b = UArray2b_new(10,10, sizeof(int), 4);
+   Uarray2b_width(uarray2b); //returns 10
+   Uarray2b_height(uarray2b); //returns 10
+   Uarray2b_size(uarray2b); //returns sizeof(int)
+   Uarray2b_blocksize(uarray2b); //returns 4
+   UArray2b_free(uarray2b);//frees allocated memory
+
+4. I will use an unboxed 2d array where a height sized uarray will be filled
+   with other uarrays that will represent blocks. This will insure that data
+   in blocks will be stored next to each other in memory.
+5. Anything that has a 2d surface can be represented as a Uarray2b. Blocking
+   will allow this data to be stored closer together resulting in a faster
+   program.
+6. Since UArray2b will be implemented as a UArray2 which I have already 
+   previously tested so I will focus on testing the UArray2b specific 
+   functions particularly the mapping function.
+
+
+
+PART C DESIGN
+
+1. I am trying to read in a ppm image and perform functions on it
+   specified by the command line. 
+2. Example inputs such as a wide variety of ppm files, and different
+   command line arguments like rotate 90, flip vertical, and row-major.
+3. Rotate 90 will result in the the input being rotated 90 degrees clockwise,
+   flip vertical will reflect the image over the imaginary y axis at width/2,
+   and row-major will copy pixels from the source image using map_row_major
+4. I can break the problem down into reading in, processing the command line 
+   argument and applying it, then printing out.
+5. The ppm file will be in each sub problem in while be stored by a UArray2b
+   or a UArray2.
+6. The main algorithms being used are those for a 90 degree rotation where the
+   original pixels (i,j) become (h-j-1,i) in the rotated image where h is
+   height and that for a 180 degree rotation where (i,j) becomes (w-i-1,h-j-1)
+   where w is width and h is height.
+7. Data will either be put into UArray2b or a UArray2 so that either row/col
+   major mapping or block major mapping can be applied. This way, all mapping
+   commands can be supported. 
+8. The most important invariants that will hold are that blocks will be stored
+   next to each other in memory and that the function that reads the ppm will
+   support all kinds of mapping. 
+
+
+ 

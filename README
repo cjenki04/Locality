@@ -1,0 +1,22 @@
+README
+Conor Jenkinson and Sydney Strzempko
+HW3 - Locality
+IMPLEMENTATIONS
+We have correctly implemented all of the required commands as well as 
+-rotate 270, -flip horizontal, -flip vertical, and -transpose.
+The only thing that may not be correctly implemented is our uarray2b as
+it runs slower than our other mapping functions. 
+ARCHITECTURE
+Our implementation started by reading in the given image file using Pnm_ppmread
+after setting the correct methods and mapping function in our Pnm_ppm struct 
+and setting that initial map to a Pnm_ppm struct called pixmap. Next, based on
+what command line argument was given, that struct was either flipped, rotated,
+or transposed. The flipped, rotated, or transposed pixmap was represented by
+rpixmap, which copied pixmap in the specified way. Rpixmap is then written 
+to stdout. However, if a rotation of 0 is specified, pixmap is the Pnm_ppm
+written to stdout. 
+
+* PART E IN PDF
+
+HOURS: about 50
+

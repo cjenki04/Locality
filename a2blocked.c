@@ -35,7 +35,7 @@ static int size(A2 array2)
 	return UArray2b_size(array2);
 }
 static int blocksize(A2 array2)
-{
+{	
 	return UArray2b_blocksize(array2);
 }
 
